@@ -1,4 +1,4 @@
-# Wenn man eine 3 und eine 5 geschrieben hat, dann ist der durchschnitt 4.0
+# Wenn man eine 3 und eine 5 geschrieben hat, dann ist der durchschnitt 4.0 welches heisst das er mir Typ 2 Herrausspuckt.
 anzahl = 0
 note1 = 0.0
 note2 = 0.0

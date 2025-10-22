@@ -1,0 +1,43 @@
+def easter_date(year: int):
+    # Teil 1 - Zwischenwerte m und n bestimmen
+    m = (8 * (year // 100) + 13) // 25 - 2
+    s = year // 100 - year // 400 - 2
+    m = (15 + s - m) % 30
+    n = (6 + s) % 7
+
+    # Teil 2 - Zwischenwerte d und e berechnen
+    a = year % 19
+    b = year % 4
+    c = year % 7
+    d = (19 * a + m) % 30
+    # Korrekturen gemäss Anweisung
+    if d == 29:
+        d = 28
+    else:
+        if d == 28 and a >= 11:
+            d = 27
+    e = (2 * b + 4 * c + 6 * d + n) % 7
+
+    # Teil 3 - Tag und Monat bestimmen
+    day = 22 + d + e   # anfänglich März
+    month = "März"
+    if day > 31:
+        day = day - 31
+        month = "April"
+    return year, day, month
+
+if __name__ == "__main__":
+    # Prüfbeispiele
+    for y in (2016, 2019, 2026):
+        year, day, month = easter_date(y)
+        print(f"{year}: {day}. {month}")
+
+    # Interaktive Abfrage (in einer lokalen Python-Umgebung)
+    try:
+        s = input("Gib ein Jahr ein (oder Enter zum Beenden): ").strip()
+        if s:
+            y = int(s)
+            _, day, month = easter_date(y)
+            print(f"Ostersonntag im Jahr {y}: {day}. {month}")
+    except Exception as e:
+        print("Fehler:", e)
